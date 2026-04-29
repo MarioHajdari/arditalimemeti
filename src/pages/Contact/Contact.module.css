@@ -11,7 +11,7 @@
 }
 
 .heroContainer {
-  max-width: 800px;
+  /* no max-width — aligns to the left edge of the container */
 }
 
 .heroText {

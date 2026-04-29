@@ -1,12 +1,27 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ProjectCard from '../ProjectCard/ProjectCard';
 import styles from './ProjectGrid.module.css';
 
 export default function ProjectGrid({ projects }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const closeModal = () => setSelectedProject(null);
+
+  const stripVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        delay: i * 0.12,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    }),
+  };
+
+  // Use Vimeo thumbnail
+  const getThumbnail = (videoId) => `https://vumbnail.com/${videoId}.jpg`;
 
   return (
     <>
@@ -27,26 +42,72 @@ export default function ProjectGrid({ projects }) {
             </h2>
           </motion.div>
 
-          {/* Asymmetric Grid */}
-          <motion.div
-            className={styles.grid}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          {/* Horizontal Strips */}
+          <div className={styles.strips}>
             {projects.map((project, index) => (
-              <div
+              <motion.article
                 key={project.id}
-                className={`${styles.gridItem} ${styles[`item${index + 1}`]}`}
+                className={`${styles.strip} ${index % 2 !== 0 ? styles.stripReversed : ''}`}
+                custom={index}
+                variants={stripVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                onClick={() => setSelectedProject(project)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View project: ${project.title}`}
               >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  onSelect={setSelectedProject}
-                />
-              </div>
+                {/* Thumbnail Side */}
+                <div className={styles.stripThumbnail}>
+                  <motion.div
+                    className={styles.thumbnailInner}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <img
+                      src={getThumbnail(project.videoId)}
+                      alt={`${project.title} - ${project.category}`}
+                      className={styles.thumbnail}
+                      loading="lazy"
+                    />
+                    {/* Play overlay */}
+                    <div className={styles.playOverlay}>
+                      <svg viewBox="0 0 56 56" fill="none" className={styles.playIcon}>
+                        <circle cx="28" cy="28" r="27" stroke="currentColor" strokeWidth="1" />
+                        <polygon points="23,18 38,28 23,38" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Info Side */}
+                <div className={styles.stripInfo}>
+                  <div className={styles.stripMeta}>
+                    <span className={styles.stripNumber}>{String(index + 1).padStart(2, '0')}</span>
+                    <span className={styles.stripDivider} />
+                    <span className="label">{project.category}</span>
+                  </div>
+
+                  <h3 className={styles.stripTitle}>{project.title}</h3>
+
+                  <p className={styles.stripDesc}>{project.description}</p>
+
+                  <div className={styles.stripFooter}>
+                    <span className={styles.stripRole}>{project.role}</span>
+                    <span className={styles.stripYear}>{project.year}</span>
+                  </div>
+
+                  <div className={styles.stripCta}>
+                    <span>Watch Project</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.ctaArrow}>
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.article>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
