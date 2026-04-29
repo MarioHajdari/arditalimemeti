@@ -163,6 +163,19 @@
   color: var(--color-text-muted);
 }
 
+.emailLink {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.emailLink:hover {
+  color: var(--color-accent);
+}
+
 /* ── Social List ────────────────────────────────────── */
 
 .socialList {

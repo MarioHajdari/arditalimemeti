@@ -119,8 +119,8 @@ export default function ContactForm() {
           >
             <option value="" disabled>Approximate budget</option>
             <option value="under-1k">Under €1,000</option>
-            <option value="1k-5k">€1,000 — €5,000</option>
-            <option value="5k-15k">€5,000 — €15,000</option>
+            <option value="1k-5k">€1,000 - €5,000</option>
+            <option value="5k-15k">€5,000 - €15,000</option>
             <option value="15k+">€15,000+</option>
             <option value="discuss">Let's Discuss</option>
           </select>

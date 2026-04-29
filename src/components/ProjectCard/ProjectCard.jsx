@@ -87,7 +87,7 @@ export default function ProjectCard({ project, index, onSelect }) {
       >
         <div className={styles.cardMeta}>
           <span className={styles.cardYear}>{project.year}</span>
-          <span className={styles.cardDivider}>—</span>
+          <span className={styles.cardDivider}>|</span>
           <span className={styles.cardRole}>{project.role}</span>
         </div>
         <h3 className={styles.cardTitle}>{project.title}</h3>

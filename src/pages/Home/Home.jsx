@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <PageTransition>
       <main>
-        <h1 className="sr-only">Ardit Alimemeti — Filmmaker and Visual Storyteller Portfolio</h1>
+        <h1 className="sr-only">Ardit Alimemeti | Filmmaker and Visual Storyteller Portfolio</h1>
         <HeroVideo videoId={heroVideoId} taglines={taglines} />
         <ProjectGrid projects={projects} />
       </main>

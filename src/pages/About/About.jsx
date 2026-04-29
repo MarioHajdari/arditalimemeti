@@ -90,7 +90,7 @@ export default function About() {
                     Ardit Alimemeti is a multimedia architect and visual creator with an artistic
                     foundation in multimedia and a sharp edge sharpened by years in national and
                     international journalism. He specializes in crafting audiovisual content with
-                    a definitive identity—blending the rhythm of storytelling with a rigorous eye
+                    a definitive identity, blending the rhythm of storytelling with a rigorous eye
                     for visual composition.
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export default function About() {
                   <p className={styles.storyText}>
                     His portfolio is a testament to visual coherence. Whether through video editing,
                     photography, or art direction, Ardit builds narratives that don't just look
-                    good—they resonate. He is dedicated to strengthening the visibility of Balkan
+                    good, they resonate. He is dedicated to strengthening the visibility of Balkan
                     cinema, one frame at a time.
                   </p>
                 </div>

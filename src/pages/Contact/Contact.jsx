@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, Mail } from 'lucide-react';
 import PageTransition from '../../components/PageTransition/PageTransition';
 import ScrollReveal from '../../components/ScrollReveal/ScrollReveal';
 import ContactForm from '../../components/ContactForm/ContactForm';
@@ -30,7 +30,7 @@ export default function Contact() {
               </h1>
               <p className={styles.heroDesc}>
                 Have a project in mind? Whether it's a commercial, music video, documentary,
-                or something entirely new — I'd love to hear about it.
+                or something entirely new, I'd love to hear about it.
               </p>
             </motion.div>
           </div>
@@ -83,6 +83,17 @@ export default function Contact() {
                   <span className="label">Based In</span>
                   <p className={styles.directText}>Albania</p>
                   <p className={styles.directSubtext}>Available worldwide for remote collaboration</p>
+                </div>
+
+                {/* Email */}
+                <div className={styles.directBlock}>
+                  <span className="label">Email</span>
+                  <a
+                    href="mailto:a.alimemeti18@gmail.com"
+                    className={styles.emailLink}
+                  >
+                    a.alimemeti18@gmail.com
+                  </a>
                 </div>
 
                 {/* Decorative */}
