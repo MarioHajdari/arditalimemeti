@@ -1,0 +1,280 @@
+/* ── Navbar ──────────────────────────────────────────── */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  transition: background var(--duration-medium) var(--ease-out-expo),
+              backdrop-filter var(--duration-medium) var(--ease-out-expo);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+}
+
+.navbar.menuOpen {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--space-md);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* ── Wordmark ───────────────────────────────────────── */
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  z-index: 1001;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.wordmark:hover {
+  opacity: 0.8;
+}
+
+.wordmarkName {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+}
+
+.wordmarkSurname {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-text-primary);
+}
+
+/* ── Camera Lens Button ─────────────────────────────── */
+
+.apertureBtn {
+  position: relative;
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.apertureSvg {
+  width: 44px;
+  height: 44px;
+  overflow: visible;
+  transition: transform var(--duration-medium) var(--ease-out-expo);
+}
+
+.apertureBtn:hover .apertureSvg {
+  transform: rotate(15deg);
+}
+
+.apertureOpen .apertureSvg {
+  transform: rotate(30deg);
+}
+
+/* Lens rings */
+.lensRing {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  transition: stroke var(--duration-fast) ease;
+}
+
+.apertureBtn:hover .lensRing {
+  stroke: var(--color-accent);
+}
+
+.lensRingInner {
+  fill: none;
+  stroke: var(--color-text-dim);
+  stroke-width: 0.5;
+  transition: stroke var(--duration-fast) ease;
+}
+
+/* Aperture blades */
+.apertureBlade {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  transition: all var(--duration-medium) var(--ease-out-expo);
+}
+
+.apertureOpen .apertureBlade {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.bladesGroup {
+  transition: transform var(--duration-medium) var(--ease-out-expo);
+  transform-origin: 30px 30px;
+}
+
+.apertureOpen .bladesGroup {
+  transform: rotate(-30deg);
+}
+
+/* Center hole */
+.apertureHole {
+  fill: var(--color-bg-primary);
+  stroke: var(--color-accent);
+  stroke-width: 0.8;
+  transition: all var(--duration-medium) var(--ease-out-expo);
+}
+
+.apertureOpen .apertureHole {
+  fill: none;
+  stroke: var(--color-text-dim);
+  r: 20;
+}
+
+/* Focus marks on the ring */
+.focusMark {
+  stroke: var(--color-text-dim);
+  stroke-width: 0.8;
+  transition: stroke var(--duration-fast) ease;
+}
+
+.apertureBtn:hover .focusMark {
+  stroke: var(--color-accent);
+}
+
+/* ── Menu Overlay ───────────────────────────────────── */
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: var(--space-xl);
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.menuItem {
+  overflow: hidden;
+  perspective: 800px;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  position: relative;
+  padding: var(--space-xs) 0;
+  transition: color var(--duration-fast) ease;
+}
+
+.menuLink:hover .linkText {
+  color: var(--color-accent);
+}
+
+.menuLink:hover .linkLine {
+  width: 60px;
+  background: var(--color-accent);
+}
+
+.linkNumber {
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  min-width: 2em;
+}
+
+.linkText {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  transition: color var(--duration-fast) ease;
+  line-height: 1.1;
+}
+
+.linkLine {
+  height: 1px;
+  width: 0;
+  background: var(--color-text-muted);
+  transition: all var(--duration-medium) var(--ease-out-expo);
+}
+
+.activeLink .linkText {
+  color: var(--color-accent);
+}
+
+.activeLink .linkLine {
+  width: 40px;
+  background: var(--color-accent);
+}
+
+.menuFooter {
+  text-align: center;
+}
+
+.menuTagline {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .wordmarkName,
+  .wordmarkSurname {
+    font-size: 1rem;
+  }
+
+  .linkText {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+
+  .menuLink {
+    gap: var(--space-sm);
+  }
+}
