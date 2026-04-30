@@ -163,6 +163,17 @@
   color: var(--color-accent);
 }
 
+.stripSubtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-dim);
+  margin-top: calc(var(--space-xs) * -0.5);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.05em;
+}
+
 /* Description */
 .stripDesc {
   font-family: var(--font-body);
@@ -324,6 +335,17 @@
   font-size: var(--fs-h2);
   font-weight: 400;
   color: var(--color-text-primary);
+}
+
+.modalSubtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-dim);
+  margin-top: calc(var(--space-xs) * -0.5);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.05em;
 }
 
 .modalDesc {

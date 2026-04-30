@@ -27,7 +27,8 @@ export default function ContactForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_ACCESS_KEY', // Replace with actual key
+          access_key: '97d14da1-4a6e-4f71-95a4-f6daa8b9d2a4',
+          from_name: formData.name,
           subject: `New Project Inquiry from ${formData.name}`,
           ...formData,
         }),

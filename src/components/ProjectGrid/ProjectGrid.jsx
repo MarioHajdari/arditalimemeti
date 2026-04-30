@@ -90,6 +90,7 @@ export default function ProjectGrid({ projects }) {
                   </div>
 
                   <h3 className={styles.stripTitle}>{project.title}</h3>
+                  <p className={styles.stripSubtitle}>A Papadhimitri Production</p>
 
                   <p className={styles.stripDesc}>{project.description}</p>
 
@@ -156,6 +157,7 @@ export default function ProjectGrid({ projects }) {
                   <span className={styles.modalYear}>{selectedProject.year}</span>
                 </div>
                 <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
+                <p className={styles.modalSubtitle}>A Papadhimitri Production</p>
                 <p className={styles.modalDesc}>{selectedProject.description}</p>
                 <p className={styles.modalRole}>
                   <strong>Role:</strong> {selectedProject.role}
